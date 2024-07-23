@@ -27,4 +27,24 @@ class Predators { // class of predators because the predators and/or source of p
             }
         }
     }
+    
+    func search(for searchText: String) -> [ApexPredator]{
+        if searchText.isEmpty {
+            return apexPredators
+        } else {
+            return apexPredators.filter {
+                predator in predator.name.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
+    
+    func sort(by alphabetical: Bool) {
+        apexPredators.sort{ predator1, predator2 in
+            if alphabetical {
+                predator1.name < predator2.name
+            } else{
+                predator1.id < predator2.id
+            }
+        }
+    }
 }
