@@ -9,7 +9,7 @@ import Foundation
 
 class Predators { // class of predators because the predators and/or source of predator data may change over time
     var apexPredators: [ApexPredator] = [] // when data is decoded it needs a place to be stored, this will be that place
-    
+    var allApexPredators: [ApexPredator] = []
     init() {
         decodeApexPredatorData()
     }
@@ -21,7 +21,8 @@ class Predators { // class of predators because the predators and/or source of p
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                apexPredators = try decoder.decode([ApexPredator].self, from: data)
+                allApexPredators = try decoder.decode([ApexPredator].self, from: data)
+                apexPredators = allApexPredators
             }catch{
                 print("Error decoding JSON data: \(error)")
             }
@@ -44,6 +45,16 @@ class Predators { // class of predators because the predators and/or source of p
                 predator1.name < predator2.name
             } else{
                 predator1.id < predator2.id
+            }
+        }
+    }
+    
+    func filter(by type: PredatorType) {
+        if type == .all{
+            apexPredators = allApexPredators
+        }else {
+            apexPredators = allApexPredators.filter { predator in
+                predator.type == type
             }
         }
     }
