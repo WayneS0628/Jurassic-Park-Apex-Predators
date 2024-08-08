@@ -28,7 +28,7 @@ struct ApexPredator: Decodable, Identifiable {
     // Define a nested struct called 'MovieScene' that also conforms to the 'Decodable' protocol
     // This struct represents the data structure for a movie scene in the JSON
     // 'Decodable' allows the struct to be initialized from JSON data
-    struct MovieScene: Decodable {
+    struct MovieScene: Decodable, Identifiable {
         let id: Int // Property to store the ID of the movie scene
         let movie: String // Property to store the name of the movie
         let sceneDescription: String // Property to store the description of the scene
