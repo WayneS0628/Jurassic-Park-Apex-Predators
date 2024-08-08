@@ -71,7 +71,6 @@ struct ContentView: View {
 //                        }
                         Image(systemName: alphabetical ?
                               "film" : "textformat")
-                        .foregroundStyle(.white)
                         .symbolEffect(.bounce, value: alphabetical)
                     }
                 }
@@ -86,7 +85,6 @@ struct ContentView: View {
                         }
                     } label: {
                         Image(systemName: "slider.horizontal.3")
-                            .foregroundStyle(.white)
                     }
                 }
             }
